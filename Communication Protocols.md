@@ -204,90 +204,75 @@ sequenceDiagram
 
 ## What is TCP?
 
-- **Definition**: TCP is a connection-oriented communication protocol used for reliable transmission of data over the internet. It ensures that all packets arrive, in order, without errors.
-- **Type**: Transport-layer protocol.
-- **Port**: Uses various ports (e.g., 80 for HTTP, 443 for HTTPS).
-- **Key Features**:
-  - Connection-oriented.
-  - Reliable, with acknowledgment of data receipt.
-  - Data is transmitted in segments, reassembled at the destination.
+- **TCP** is a communication protocol that helps computers talk to each other reliably over the internet.
+- It ensures data is sent correctly, in the right order, without missing parts.
+- It’s like sending a package through a courier that guarantees safe delivery.
 
 ---
 
 ## Why is TCP Important?
 
-1. **Reliability**:
-   - Ensures data reaches its destination accurately and in sequence.
-2. **Error Handling**:
-   - Retransmits lost or corrupted data packets.
-3. **Ordered Delivery**:
-   - Guarantees the order of data packets, critical for applications like file transfers.
-4. **Widely Used**:
-   - Foundation for protocols like HTTP, HTTPS, FTP, and SMTP.
+- **Reliable**: Makes sure data gets to the other side without problems.
+- **Error Handling**: Fixes any mistakes if data is lost or damaged.
+- **Ordered Delivery**: Ensures everything arrives in the same order it was sent.
 
 ---
 
-## When is TCP Used?
+## When Do We Use TCP?
 
-- **Web Browsing**: To load websites securely and reliably (via HTTP/HTTPS).
-- **File Transfers**: For large files using FTP.
-- **Email Delivery**: Ensures messages are sent and received correctly (via SMTP).
-- **Remote Access**: Used in SSH and Telnet for secure connections.
-
----
-
-## Where Does TCP Operate?
-
-- TCP operates at the **Transport Layer** of the OSI model.
-- It acts as an intermediary between the **application layer** (e.g., HTTP) and the **network layer** (IP).
+- **Web Browsing**: Loading websites (e.g., HTTP/HTTPS).
+- **File Transfers**: Sending large files (e.g., FTP).
+- **Email**: Sending emails reliably (e.g., SMTP).
+- **Video Calls**: Some apps use TCP for stable communication.
 
 ---
 
-## How TCP Works
+## Where Does TCP Work?
 
-### Step-by-Step Process:
-
-1. **Connection Establishment**:
-   - Uses a **three-way handshake** to establish a connection.
-   - Both sender and receiver agree on initial sequence numbers.
-2. **Data Transmission**:
-   - Data is divided into segments and sent.
-   - Each segment is acknowledged by the receiver.
-3. **Error Handling**:
-   - Lost or corrupted segments are retransmitted.
-4. **Connection Termination**:
-   - Uses a **four-step process** to safely close the connection.
+- TCP works in the **Transport Layer** of the internet.
+- It helps manage data between applications (like your browser) and networks (like the internet).
 
 ---
 
-## Scenario: Downloading a File
+## How Does TCP Work?
 
-### Real-Life Example
+### Steps:
 
-1. **Request Initiation**:
-   - You click "Download" on a website.
-2. **Connection Established**:
-   - TCP establishes a reliable connection between your browser and the server.
-3. **Data Transmission**:
-   - The server sends the file in segments.
-   - TCP ensures all segments are received and reassembled in the correct order.
-4. **File Completion**:
-   - Once the download is complete, TCP closes the connection.
+1. **Starting the Connection**:
+   - TCP creates a connection using a handshake (like saying “Hello” to start a call).
+2. **Sending Data**:
+   - Data is broken into smaller pieces called segments.
+   - Each segment is checked to make sure it’s delivered correctly.
+3. **Fixing Problems**:
+   - If something goes wrong, TCP resends the missing data.
+4. **Closing the Connection**:
+   - TCP closes the connection when the communication is done.
 
 ---
 
-## Visualization: How TCP Works
+## Real-Life Example: Downloading a File
 
-### Three-Way Handshake
+1. You click "Download" on a website.
+2. TCP creates a connection between your computer and the server.
+3. The server sends the file in small chunks.
+4. TCP makes sure every chunk arrives safely and in order.
+5. When the file is fully downloaded, the connection is closed.
+
+---
+
+## Visualizing TCP
+
+### Handshake: Starting the Connection
 
 ```mermaid
 sequenceDiagram
   participant Client
   participant Server
-  Client->>Server: SYN (Synchronize)
-  Server->>Client: SYN-ACK (Synchronize + Acknowledge)
-  Client->>Server: ACK (Acknowledge)
-  Note over Client,Server: Connection Established
+  Client->>Server: SYN (Hello, let’s connect)
+  Server->>Client: SYN-ACK (Okay, let’s connect)
+  Client->>Server: ACK (Connection confirmed)
+  Note over Client,Server: Connection is established.
+
 ```
 ---
 ```mermaid
