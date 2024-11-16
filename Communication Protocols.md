@@ -1,6 +1,5 @@
 # Writing the detailed HTTP explanation in Markdown format to a file
 
-md_content = """
 # HTTP (Hypertext Transfer Protocol)
 
 ## What is HTTP?
