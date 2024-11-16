@@ -199,3 +199,110 @@ sequenceDiagram
   Browser->>Server: Send Encrypted Data
   Server-->>Browser: Send Encrypted Response
 ```
+---
+# TCP (Transmission Control Protocol)
+
+## What is TCP?
+
+- **Definition**: TCP is a connection-oriented communication protocol used for reliable transmission of data over the internet. It ensures that all packets arrive, in order, without errors.
+- **Type**: Transport-layer protocol.
+- **Port**: Uses various ports (e.g., 80 for HTTP, 443 for HTTPS).
+- **Key Features**:
+  - Connection-oriented.
+  - Reliable, with acknowledgment of data receipt.
+  - Data is transmitted in segments, reassembled at the destination.
+
+---
+
+## Why is TCP Important?
+
+1. **Reliability**:
+   - Ensures data reaches its destination accurately and in sequence.
+2. **Error Handling**:
+   - Retransmits lost or corrupted data packets.
+3. **Ordered Delivery**:
+   - Guarantees the order of data packets, critical for applications like file transfers.
+4. **Widely Used**:
+   - Foundation for protocols like HTTP, HTTPS, FTP, and SMTP.
+
+---
+
+## When is TCP Used?
+
+- **Web Browsing**: To load websites securely and reliably (via HTTP/HTTPS).
+- **File Transfers**: For large files using FTP.
+- **Email Delivery**: Ensures messages are sent and received correctly (via SMTP).
+- **Remote Access**: Used in SSH and Telnet for secure connections.
+
+---
+
+## Where Does TCP Operate?
+
+- TCP operates at the **Transport Layer** of the OSI model.
+- It acts as an intermediary between the **application layer** (e.g., HTTP) and the **network layer** (IP).
+
+---
+
+## How TCP Works
+
+### Step-by-Step Process:
+
+1. **Connection Establishment**:
+   - Uses a **three-way handshake** to establish a connection.
+   - Both sender and receiver agree on initial sequence numbers.
+2. **Data Transmission**:
+   - Data is divided into segments and sent.
+   - Each segment is acknowledged by the receiver.
+3. **Error Handling**:
+   - Lost or corrupted segments are retransmitted.
+4. **Connection Termination**:
+   - Uses a **four-step process** to safely close the connection.
+
+---
+
+## Scenario: Downloading a File
+
+### Real-Life Example
+
+1. **Request Initiation**:
+   - You click "Download" on a website.
+2. **Connection Established**:
+   - TCP establishes a reliable connection between your browser and the server.
+3. **Data Transmission**:
+   - The server sends the file in segments.
+   - TCP ensures all segments are received and reassembled in the correct order.
+4. **File Completion**:
+   - Once the download is complete, TCP closes the connection.
+
+---
+
+## Visualization: How TCP Works
+
+### Three-Way Handshake
+
+```mermaid
+sequenceDiagram
+  participant Client
+  participant Server
+  Client->>Server: SYN (Synchronize)
+  Server->>Client: SYN-ACK (Synchronize + Acknowledge)
+  Client->>Server: ACK (Acknowledge)
+  Note over Client,Server: Connection Established
+
+sequenceDiagram
+  participant Sender
+  participant Receiver
+  Sender->>Receiver: Data Segment 1
+  Receiver->>Sender: ACK for Segment 1
+  Sender->>Receiver: Data Segment 2
+  Receiver->>Sender: ACK for Segment 2
+  Note over Sender,Receiver: Reliable Data Delivery
+
+sequenceDiagram
+  participant Client
+  participant Server
+  Client->>Server: FIN (Finish)
+  Server->>Client: ACK for FIN
+  Server->>Client: FIN (Finish)
+  Client->>Server: ACK for FIN
+  Note over Client,Server: Connection Terminated
