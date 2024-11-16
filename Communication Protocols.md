@@ -368,3 +368,79 @@ sequenceDiagram
   Sender->>Receiver: Sends Data 2
   Sender->>Receiver: Sends Data 3
   Note over Sender,Receiver: No confirmation from Receiver.
+```
+----
+# WebSockets
+
+## What are WebSockets?
+
+- **WebSockets** are a protocol used for establishing a two-way, continuous communication channel between a client (like a browser) and a server.
+- Unlike HTTP, which is request-response based, WebSockets allow both the client and the server to send data to each other at any time.
+- It’s like a phone call: once the connection is established, both parties can talk to each other freely without having to wait for a reply.
+
+---
+
+## Why are WebSockets Important?
+
+1. **Real-Time Communication**:
+   - WebSockets enable instant data exchange, making them perfect for chat apps, live notifications, or online gaming.
+2. **Efficient**:
+   - Once the WebSocket connection is established, data can flow in both directions without the need for repeatedly opening and closing connections.
+3. **Low Latency**:
+   - WebSockets provide faster data transfer compared to polling methods (where the client repeatedly asks the server for updates).
+
+---
+
+## When Do We Use WebSockets?
+
+- **Chat Applications**: For real-time messaging between users.
+- **Live Notifications**: For sending updates or notifications in real-time (e.g., stock prices, sports scores).
+- **Online Multiplayer Games**: To exchange game data and actions between players.
+- **Collaborative Tools**: For real-time collaboration on documents or whiteboards.
+
+---
+
+## Where Do WebSockets Work?
+
+- WebSockets are used in the **Application Layer** and run over the same ports used by HTTP (usually port 80 for non-secure, 443 for secure connections).
+- It allows continuous communication between a client (browser) and a server.
+
+---
+
+## How Do WebSockets Work?
+
+### Steps:
+
+1. **Connection Request**:
+   - The client sends a special HTTP request (known as a WebSocket handshake) to the server, asking to upgrade the connection to WebSocket.
+2. **Handshake Response**:
+   - The server responds with an HTTP 101 status code to confirm the upgrade.
+3. **Full-Duplex Communication**:
+   - Once the connection is established, the client and server can send data in both directions at any time.
+4. **Closing the Connection**:
+   - Either the client or the server can close the WebSocket connection when it’s no longer needed.
+
+---
+
+## Real-Life Example: Chat Application
+
+1. You open a chat app.
+2. The client (your browser) sends a WebSocket handshake request to the server.
+3. Once the server approves, the WebSocket connection is established.
+4. You send a message, and it appears instantly in the chat of the other user without refreshing the page.
+5. The connection stays open as long as the app is running, allowing you to receive messages instantly.
+
+---
+
+## Visualizing WebSockets
+
+### Connection Establishment
+
+```mermaid
+sequenceDiagram
+  participant Client
+  participant Server
+  Client->>Server: HTTP Request (Upgrade to WebSocket)
+  Server->>Client: HTTP 101 Response (Connection Upgraded)
+  Note over Client,Server: WebSocket connection established.
+
