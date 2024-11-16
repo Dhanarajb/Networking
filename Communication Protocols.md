@@ -1,6 +1,6 @@
-# Writing the detailed HTTP explanation in Markdown format to a file
+# Communication Protocols
 
-# HTTP (Hypertext Transfer Protocol)
+# 1. HTTP (Hypertext Transfer Protocol)
 
 ## What is HTTP?
 
