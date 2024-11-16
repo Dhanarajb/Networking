@@ -42,6 +42,14 @@
      - **Render Tree**: Merges the DOM and CSSOM to represent visual elements.
      - **Painting**: Converts the render tree into a visual output and displays the webpage on the screen.
 
+---
+| Level                  | Example (www.example.com)  |
+|------------------------|----------------------------|
+| **Root Level**          | `.`                        |
+| **Top-Level Domain (TLD)** | `.com`                   |
+| **Second-Level Domain (SLD)** | `example`            |
+| **Third-Level Domain (Subdomain)** | `www`           |
+
 
 ---
 ![Micro Front End-2024-11-16-071247](https://github.com/user-attachments/assets/657dad32-6b22-4702-8b95-d29b07cf1790)
