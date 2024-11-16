@@ -297,3 +297,74 @@ sequenceDiagram
   Note over Client,Server: Connection Terminated
 ```
 ---
+# UDP (User Datagram Protocol)
+
+## What is UDP?
+
+- **UDP** is a communication protocol used to send data quickly over the internet.
+- Unlike TCP, it doesn’t check if the data arrives or if it’s in order.
+- It’s like sending a postcard: once it’s sent, you don’t check if it’s delivered.
+
+---
+
+## Why is UDP Important?
+
+1. **Speed**:
+   - UDP is very fast because it skips extra checks.
+2. **Lightweight**:
+   - Uses less bandwidth and resources.
+3. **Real-Time Communication**:
+   - Ideal for time-sensitive tasks like video streaming or gaming.
+
+---
+
+## When Do We Use UDP?
+
+- **Live Streaming**: To avoid delays while watching videos or sports online.
+- **Online Gaming**: For fast communication during gameplay.
+- **Video Calls**: For real-time audio and video without interruptions.
+- **DNS (Domain Name System)**: Quick lookups for website addresses.
+
+---
+
+## Where Does UDP Work?
+
+- UDP works in the **Transport Layer** of the internet.
+- It handles data directly between applications and the network.
+
+---
+
+## How Does UDP Work?
+
+### Steps:
+
+1. **Sending Data**:
+   - The sender breaks data into small packets.
+   - UDP sends packets without checking if they arrive or are in order.
+2. **No Feedback**:
+   - The receiver doesn’t send back confirmations.
+3. **Fast Delivery**:
+   - Packets are delivered as quickly as possible, even if some are lost.
+
+---
+
+## Real-Life Example: Watching a Live Sports Stream
+
+1. You start watching a live football match online.
+2. UDP sends the video data quickly to your device.
+3. If a small part of the video is lost, you won’t notice because the stream keeps playing without delay.
+
+---
+
+## Visualizing UDP
+
+### Sending Data without Confirmation
+
+```mermaid
+sequenceDiagram
+  participant Sender
+  participant Receiver
+  Sender->>Receiver: Sends Data 1
+  Sender->>Receiver: Sends Data 2
+  Sender->>Receiver: Sends Data 3
+  Note over Sender,Receiver: No confirmation from Receiver.
