@@ -41,3 +41,7 @@
      - **Layout (Reflow)**: Determines the size and position of elements on the page.
      - **Render Tree**: Merges the DOM and CSSOM to represent visual elements.
      - **Painting**: Converts the render tree into a visual output and displays the webpage on the screen.
+
+
+---
+![Micro Front End-2024-11-16-071247](https://github.com/user-attachments/assets/657dad32-6b22-4702-8b95-d29b07cf1790)
