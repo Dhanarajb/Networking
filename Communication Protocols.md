@@ -100,3 +100,102 @@ sequenceDiagram
   WebServer-->>Browser: HTTP 200 OK (Response with HTML)
   Browser->>WebServer: Request for Images, CSS, JS
   WebServer-->>Browser: Response with Resources
+```
+-----
+# HTTPS (Hypertext Transfer Protocol Secure)
+
+## What is HTTPS?
+
+- **Definition**: HTTPS is the secure version of HTTP. It uses encryption (via SSL/TLS) to secure the communication between the client and server, ensuring confidentiality, integrity, and authenticity of the data.
+- **Type**: Application-layer protocol, secure by design.
+- **Port**: HTTPS operates on **port 443** (default).
+- **Encryption Standard**: Uses **SSL/TLS** for encryption.
+
+---
+
+## Why is HTTPS Important?
+
+1. **Data Security**:
+   - Encrypts sensitive data (e.g., passwords, credit card information) to prevent interception.
+2. **Trust and Credibility**:
+   - Browsers display a padlock icon, indicating a secure website.
+3. **SEO Benefits**:
+   - Search engines like Google prioritize HTTPS websites in rankings.
+4. **Prevents Attacks**:
+   - Protects against **Man-in-the-Middle (MitM)** attacks by ensuring secure connections.
+5. **Complies with Regulations**:
+   - Meets security requirements for GDPR, PCI DSS, etc.
+
+---
+
+## When is HTTPS Used?
+
+- **E-Commerce Websites**: For secure transactions involving payment details.
+- **Banking Applications**: To protect sensitive financial data.
+- **Social Media**: To safeguard personal information during login and interactions.
+- **APIs**: For secure communication between applications.
+- **Corporate Websites**: To protect proprietary data and maintain brand trust.
+
+---
+
+## Where Does HTTPS Operate?
+
+- **Between Browsers and Servers**: To encrypt web traffic (e.g., a user visiting an online store).
+- **API Communication**: Ensures secure data exchange between back-end services.
+- **Mobile Applications**: For secure transactions and user authentication.
+
+---
+
+## How HTTPS Works
+
+### Step-by-Step Process:
+
+1. **Client Requests HTTPS Connection**:
+   - The browser sends a request to establish a secure connection to the server.
+2. **SSL/TLS Handshake**:
+   - The client and server exchange encryption keys to establish a secure session.
+3. **Certificate Verification**:
+   - The server provides an SSL/TLS certificate, which the browser verifies against trusted Certificate Authorities (CAs).
+4. **Secure Data Exchange**:
+   - All subsequent communication is encrypted, ensuring privacy and integrity.
+
+---
+
+## Scenario: Making a Payment Online Using HTTPS
+
+### Real-Life Example
+
+1. **User Action**:
+   - You enter your credit card details on an e-commerce website.
+2. **Secure Connection**:
+   - The browser establishes an HTTPS connection with the server.
+3. **Encrypted Data**:
+   - Your payment details are encrypted before being sent to the server.
+4. **Server Processing**:
+   - The server decrypts the data, processes the payment, and sends a confirmation response.
+
+### Key Takeaways:
+
+- **Encryption in Action**:
+  - Prevents attackers from intercepting sensitive payment details.
+- **Trust**:
+  - The padlock icon reassures users of a secure transaction.
+
+---
+
+## Visualization: How HTTPS Works
+
+```mermaid
+sequenceDiagram
+  participant Browser
+  participant Server
+  participant CA
+  Browser->>Server: Initiate HTTPS Connection (Request)
+  Server->>Browser: Sends SSL/TLS Certificate
+  Browser->>CA: Validate Certificate
+  CA-->>Browser: Valid Certificate Confirmed
+  Browser->>Server: Exchange Encryption Keys
+  Server-->>Browser: Encrypted Connection Established
+  Browser->>Server: Send Encrypted Data
+  Server-->>Browser: Send Encrypted Response
+```
