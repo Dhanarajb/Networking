@@ -289,6 +289,7 @@ sequenceDiagram
   Client->>Server: ACK (Acknowledge)
   Note over Client,Server: Connection Established
 ```
+---
 ```mermaid
 sequenceDiagram
   participant Sender
@@ -299,6 +300,7 @@ sequenceDiagram
   Receiver->>Sender: ACK for Segment 2
   Note over Sender,Receiver: Reliable Data Delivery
 ```
+---
 ```mermaid
 sequenceDiagram
   participant Client
@@ -309,3 +311,4 @@ sequenceDiagram
   Client->>Server: ACK for FIN
   Note over Client,Server: Connection Terminated
 ```
+---
