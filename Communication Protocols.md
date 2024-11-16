@@ -102,7 +102,7 @@ sequenceDiagram
   WebServer-->>Browser: Response with Resources
 ```
 -----
-# HTTPS (Hypertext Transfer Protocol Secure)
+# 2. HTTPS (Hypertext Transfer Protocol Secure)
 
 ## What is HTTPS?
 
