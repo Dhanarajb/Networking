@@ -443,4 +443,97 @@ sequenceDiagram
   Client->>Server: HTTP Request (Upgrade to WebSocket)
   Server->>Client: HTTP 101 Response (Connection Upgraded)
   Note over Client,Server: WebSocket connection established.
+```
+---
+# 1. FTP (File Transfer Protocol)
+
+## What is FTP?
+
+- **Definition**: FTP (File Transfer Protocol) is a standard communication protocol used to transfer files between a client and a server over a network.
+- **Type**: Application-layer protocol based on TCP/IP.
+- **Port**: FTP typically operates on:
+  - **Port 21** for commands.
+  - **Port 20** for data transfer (in active mode).
+- **Modes**:
+  - **Active Mode**: The client opens a port and waits for the server to connect.
+  - **Passive Mode**: The server opens a port for the client to connect, improving compatibility with firewalls.
+
+---
+
+## Why is FTP Important?
+
+1. **File Management**: Facilitates uploading, downloading, renaming, and deleting files on remote servers.
+2. **Platform Independence**: Works across different operating systems and environments.
+3. **Batch Transfers**: Supports transferring multiple files simultaneously.
+4. **Large File Support**: Handles large file transfers efficiently.
+5. **Automation**: Can be scripted for regular tasks like backups.
+
+---
+
+## When is FTP Used?
+
+- **Website Hosting**: Uploading and maintaining files on web servers.
+- **Data Sharing**: Securely transferring files between organizations.
+- **Backups**: Automating backups to a remote server.
+- **Legacy Systems**: Interacting with older systems reliant on FTP.
+
+---
+
+## Where Does FTP Operate?
+
+- **Client-Server Architecture**:
+  - The client (e.g., FileZilla, WinSCP) communicates with an FTP server.
+- **Web Hosting Platforms**: Hosting services often provide FTP access.
+- **Corporate Networks**: For internal file transfers and backups.
+- **Remote Servers**: Managing files in cloud or on-premises environments.
+
+---
+
+## How FTP Works
+
+### Step-by-Step Process:
+
+1. **Connection Establishment**:
+   - The client connects to the server using the server's address, port (21), and credentials.
+2. **Command Exchange**:
+   - The client sends FTP commands (e.g., `PUT`, `GET`) to manage files.
+3. **File Transfer**:
+   - Files are uploaded or downloaded between the client and server using a separate data connection.
+4. **Session Termination**:
+   - The client sends a `QUIT` command to end the session.
+
+---
+
+## Scenario: Using FTP to Upload a File
+
+### Real-Life Example
+
+You want to upload a website file to a server.
+
+1. **Step 1: Connect to the Server**
+   - Open an FTP client (e.g., FileZilla).
+   - Enter the server address, username, and password.
+2. **Step 2: Navigate to the Directory**
+   - Browse the server directories to locate the target folder.
+3. **Step 3: Upload the File**
+   - Drag and drop the file from your local machine to the server directory.
+4. **Step 4: Verify Upload**
+   - Check the file's presence on the server.
+
+---
+
+## Visualization: How FTP Works
+
+```mermaid
+sequenceDiagram
+  participant Client
+  participant FTPServer
+  Client->>FTPServer: Establish Connection (Port 21)
+  FTPServer-->>Client: Connection Established
+  Client->>FTPServer: Command (e.g., GET/PUT)
+  FTPServer-->>Client: Response (e.g., 200 OK)
+  Client->>FTPServer: Data Transfer (Upload/Download)
+  FTPServer-->>Client: Data Transfer Complete
+  Client->>FTPServer: QUIT (End Session)
+  FTPServer-->>Client: Connection Closed
 
