@@ -536,4 +536,106 @@ sequenceDiagram
   FTPServer-->>Client: Data Transfer Complete
   Client->>FTPServer: QUIT (End Session)
   FTPServer-->>Client: Connection Closed
+```
+---
+# 2. SMTP (Simple Mail Transfer Protocol)
 
+## What is SMTP?
+
+- **Definition**: SMTP (Simple Mail Transfer Protocol) is a protocol used for sending and routing emails between mail servers.
+- **Type**: Application-layer protocol based on TCP/IP.
+- **Port**:
+  - **Port 25**: Default for SMTP (sometimes blocked to prevent spam).
+  - **Port 587**: Used for email submission with encryption (STARTTLS).
+  - **Port 465**: Deprecated but sometimes used for SMTPS (SMTP Secure).
+
+---
+
+## Why is SMTP Important?
+
+1. **Email Delivery**: Facilitates the sending of emails across the internet.
+2. **Reliable Communication**: Ensures the proper routing and queuing of emails.
+3. **Supports Attachments**: Allows sending text, HTML, and file attachments.
+4. **Authentication**: Provides mechanisms for secure email submission.
+5. **Integration with Systems**: Powers automated email notifications and alerts in web applications.
+
+---
+
+## When is SMTP Used?
+
+- **Sending Emails**: Outbound emails from mail clients like Outlook, Gmail, and Thunderbird.
+- **Automated Notifications**: Sending alerts, password resets, and transactional emails from applications.
+- **Bulk Emailing**: Sending newsletters and promotional emails.
+- **Forwarding Emails**: Between mail servers in distributed email systems.
+
+---
+
+## Where Does SMTP Operate?
+
+- **Client to Mail Server**:
+  - Your email client (e.g., Gmail or Outlook) uses SMTP to send emails to the server.
+- **Server to Server**:
+  - Mail servers use SMTP to relay emails to the recipient's server.
+- **Web Applications**:
+  - Applications integrate with SMTP servers to send transactional or promotional emails.
+
+---
+
+## How SMTP Works
+
+### Step-by-Step Process:
+
+1. **Client Authentication**:
+   - The email client authenticates with the SMTP server using a username and password.
+2. **Compose Email**:
+   - The client sends the email details, including:
+     - Sender's address.
+     - Recipient's address.
+     - Subject and message body.
+3. **SMTP Handshake**:
+   - The client establishes a connection with the SMTP server (usually over port 587).
+4. **Message Transmission**:
+   - The SMTP server queues and forwards the email to the recipient's mail server.
+5. **Recipient Retrieval**:
+   - The recipient's mail server delivers the email to the inbox using protocols like IMAP or POP3.
+
+---
+
+## Scenario: Sending an Email Using SMTP
+
+### Real-Life Example
+
+You want to send an email through your email client (e.g., Outlook).
+
+1. **Compose**:
+   - Write the email and add the recipient’s address.
+2. **Send**:
+   - Click "Send," and the client connects to the SMTP server.
+3. **Server Processing**:
+   - The SMTP server relays the email to the recipient's mail server.
+4. **Delivery**:
+   - The recipient's mail server delivers the email to their inbox.
+
+---
+
+## Visualization: How SMTP Works
+
+```mermaid
+sequenceDiagram
+  participant Client
+  participant SMTPServer
+  participant RecipientServer
+  Client->>SMTPServer: HELO (Initiate Connection)
+  SMTPServer-->>Client: 250 OK
+  Client->>SMTPServer: AUTH (Authenticate User)
+  SMTPServer-->>Client: 235 Authentication Successful
+  Client->>SMTPServer: MAIL FROM (Sender Address)
+  SMTPServer-->>Client: 250 OK
+  Client->>SMTPServer: RCPT TO (Recipient Address)
+  SMTPServer-->>Client: 250 OK
+  Client->>SMTPServer: DATA (Send Email Content)
+  SMTPServer-->>Client: 354 Start Mail Input
+  Client->>SMTPServer: Email Content
+  SMTPServer-->>Client: 250 Message Queued
+  SMTPServer->>RecipientServer: Forward Email
+  RecipientServer-->>SMTPServer: 250 Accepted
