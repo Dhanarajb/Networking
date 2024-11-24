@@ -121,3 +121,153 @@ sequenceDiagram
   API->>Database: Query users
   Database-->>API: Respond with user data
   API-->>Client: HTTP 200 OK + JSON response
+```
+---
+# Express.js To-Do API Example
+
+This code sets up a simple Express.js server that provides a CRUD (Create, Read, Update, Delete) API for managing a list of to-do items.
+
+## Key Features
+1. **Server Setup**: Listens on port 3000.
+2. **Hello World Endpoint**: Responds to all requests on `/` with "Hello, World!".
+3. **To-Do API**:
+   - Retrieve all to-dos
+   - Add a new to-do
+   - Update an existing to-do
+   - Delete a to-do
+
+---
+
+## Code Explanation
+
+### Imports and Initial Setup
+```javascript
+import express from "express";
+import bodyParser from "body-parser";
+
+const app = express();
+app.use(bodyParser.json());
+```
+- **express**: Framework for creating the server and handling routes.
+- **body-parser**: Middleware to parse JSON data from the request body. Converts raw JSON into JavaScript objects.
+
+### Root Route ("/")
+```javascript
+app.all("/", (req, resp) => {
+  console.log("Just got a request!", req);
+  console.log("Just got a response!", resp);
+  resp.send("Hello, World!");
+});
+```
+- Responds to any HTTP method (`GET`, `POST`, etc.) with "Hello, World!".
+- Logs the request and response objects to the console.
+
+### To-Do Data
+```javascript
+const todos = [
+  { id: "1", title: "task", complted: true },
+  { id: "2", title: "task2", complted: false },
+];
+```
+- Initial list of to-do items with `id`, `title`, and `complted` properties.
+
+### CRUD Operations
+#### 1. **Read To-Dos**
+```javascript
+app.get("/todos", (req, resp) => {
+  resp.json(todos);
+});
+```
+- **Endpoint**: `GET /todos`
+- Returns the list of all to-dos in JSON format.
+
+#### 2. **Create To-Do**
+```javascript
+app.post("/todos", (req, resp) => {
+  const newTodo = req.body;
+  todos.push(newTodo);
+  resp.status(201).json({
+    message: "new todo added",
+  });
+});
+```
+- **Endpoint**: `POST /todos`
+- Accepts a new to-do object from the request body and adds it to the list.
+- Responds with a `201 Created` status and a success message.
+
+#### 3. **Update To-Do**
+```javascript
+app.put("/todos/:id", (req, resp) => {
+  const newTodoData = req.body;
+  const todoParamID = req.params.id;
+  const todoIndex = todos.findIndex((todo) => todo.id === todoParamID);
+  if (todoIndex !== -1) {
+    todos[todoIndex] = {
+      id: todoParamID,
+      ...newTodoData,
+    };
+    resp.json({
+      message: "Todo Updated Successfully",
+    });
+  } else {
+    resp.status(404).json({
+      message: "Todo Not Found",
+    });
+  }
+});
+```
+- **Endpoint**: `PUT /todos/:id`
+- Finds a to-do by its `id` parameter, updates it with new data from the request body.
+- Responds with a success message or `404 Not Found` if the to-do doesn't exist.
+
+#### 4. **Delete To-Do**
+```javascript
+app.delete("/todos/:id", (req, resp) => {
+  const todoParamID = req.params.id;
+  const todoIndex = todos.findIndex((todo) => todo.id === todoParamID);
+  if (todoIndex !== -1) {
+    todos.splice(todoIndex, 1);
+  }
+  resp.json({
+    message: "Todo Deleted Successfully",
+  });
+});
+```
+- **Endpoint**: `DELETE /todos/:id`
+- Finds and removes a to-do by its `id` parameter.
+- Responds with a success message (even if the to-do was already deleted).
+
+### Starting the Server
+```javascript
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+```
+- Starts the server on port 3000 and logs a message to confirm it is running.
+
+---
+
+## Example Usage
+### Endpoints
+1. `GET /todos`: Get all to-dos.
+2. `POST /todos`: Add a new to-do (requires JSON in the request body).
+3. `PUT /todos/:id`: Update an existing to-do by ID (requires JSON in the request body).
+4. `DELETE /todos/:id`: Delete a to-do by ID.
+
+### Sample Data
+- Add a new to-do:
+  ```json
+  {
+    "id": "3",
+    "title": "New Task",
+    "complted": false
+  }
+  ```
+- Update an existing to-do:
+  ```json
+  {
+    "title": "Updated Task",
+    "complted": true
+  }
+  
